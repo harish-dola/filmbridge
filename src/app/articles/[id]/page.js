@@ -135,12 +135,6 @@ const ARTICLES = {
   }
 };
 
-export async function generateStaticParams() {
-  return Object.keys(ARTICLES).map((id) => ({
-    id: id,
-  }));
-}
-
 export default function ArticleDetailPage({ params }) {
   const resolvedParams = use(params);
   const id = resolvedParams?.id;
