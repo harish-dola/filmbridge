@@ -1,0 +1,146 @@
+[debug] [2026-05-08T20:35:43.776Z] ----------------------------------------------------------------------
+[debug] [2026-05-08T20:35:43.778Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Harish\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2026-05-08T20:35:43.778Z] CLI Version:   15.17.0
+[debug] [2026-05-08T20:35:43.778Z] Platform:      win32
+[debug] [2026-05-08T20:35:43.778Z] Node Version:  v24.15.0
+[debug] [2026-05-08T20:35:43.778Z] Time:          Sat May 09 2026 02:05:43 GMT+0530 (India Standard Time)
+[debug] [2026-05-08T20:35:43.778Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Harish\filmbridge
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] 
+[debug] [2026-05-08T20:35:53.465Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-05-08T20:35:53.466Z] > authorizing via signed-in user (harishdola54@gmail.com)
+[debug] [2026-05-08T20:35:53.466Z] Checked if tokens are valid: false, expires at: 1778272853695
+[debug] [2026-05-08T20:35:53.466Z] Checked if tokens are valid: false, expires at: 1778272853695
+[debug] [2026-05-08T20:35:53.467Z] > refreshing access token with scopes: []
+[debug] [2026-05-08T20:35:53.468Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-05-08T20:35:53.468Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-05-08T20:35:53.788Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-05-08T20:35:53.788Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-05-08T20:35:53.795Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/filmbridge0405 [none]
+[debug] [2026-05-08T20:35:54.532Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/filmbridge0405 200
+[debug] [2026-05-08T20:35:54.532Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/filmbridge0405 {"projectId":"filmbridge0405","projectNumber":"378735504887","displayName":"filmbridge","name":"projects/filmbridge0405","resources":{"hostingSite":"filmbridge0405"},"state":"ACTIVE","etag":"1_348a44a4-5f50-4716-b2f9-29039a0e8ca7"}
+[info] i  Using project filmbridge0405 (filmbridge) . 
+[info] 
+=== App Hosting Setup
+[debug] [2026-05-08T20:35:54.539Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:35:54.539Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:35:54.539Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/filmbridge0405/billingInfo [none]
+[debug] [2026-05-08T20:35:56.235Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/filmbridge0405/billingInfo 200
+[debug] [2026-05-08T20:35:56.235Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/filmbridge0405/billingInfo {"name":"projects/filmbridge0405/billingInfo","projectId":"filmbridge0405","billingAccountName":"billingAccounts/01FBA2-84B5AF-66E317","billingEnabled":true}
+[debug] [2026-05-08T20:35:56.236Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:35:56.236Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:35:56.236Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-05-08T20:35:56.236Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/firebaseapphosting.googleapis.com  x-goog-user-project=filmbridge0405
+[debug] [2026-05-08T20:35:58.066Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-05-08T20:35:58.066Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-05-08T20:35:58.067Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:35:58.067Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:35:58.067Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/firebaseapphosting.googleapis.com:enable [none]
+[debug] [2026-05-08T20:35:58.067Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/firebaseapphosting.googleapis.com:enable  x-goog-user-project=filmbridge0405
+[debug] [2026-05-08T20:36:00.073Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/firebaseapphosting.googleapis.com:enable 200
+[debug] [2026-05-08T20:36:00.073Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/firebaseapphosting.googleapis.com:enable [omitted]
+[debug] [2026-05-08T20:36:10.090Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:10.091Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:10.091Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:10.091Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:10.091Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:10.091Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:10.092Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:10.092Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:10.092Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:10.092Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:10.092Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:10.092Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:10.093Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/developerconnect.googleapis.com [none]
+[debug] [2026-05-08T20:36:10.093Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/developerconnect.googleapis.com  x-goog-user-project=filmbridge0405
+[debug] [2026-05-08T20:36:10.094Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/cloudbuild.googleapis.com [none]
+[debug] [2026-05-08T20:36:10.094Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/cloudbuild.googleapis.com  x-goog-user-project=filmbridge0405
+[debug] [2026-05-08T20:36:10.095Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/secretmanager.googleapis.com [none]
+[debug] [2026-05-08T20:36:10.096Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/secretmanager.googleapis.com  x-goog-user-project=filmbridge0405
+[debug] [2026-05-08T20:36:10.097Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/run.googleapis.com [none]
+[debug] [2026-05-08T20:36:10.097Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/run.googleapis.com  x-goog-user-project=filmbridge0405
+[debug] [2026-05-08T20:36:10.098Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/artifactregistry.googleapis.com [none]
+[debug] [2026-05-08T20:36:10.098Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/artifactregistry.googleapis.com  x-goog-user-project=filmbridge0405
+[debug] [2026-05-08T20:36:10.099Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/iam.googleapis.com [none]
+[debug] [2026-05-08T20:36:10.099Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/iam.googleapis.com  x-goog-user-project=filmbridge0405
+[debug] [2026-05-08T20:36:11.967Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/artifactregistry.googleapis.com 200
+[debug] [2026-05-08T20:36:11.967Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/artifactregistry.googleapis.com [omitted]
+[debug] [2026-05-08T20:36:11.976Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/run.googleapis.com 200
+[debug] [2026-05-08T20:36:11.976Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/run.googleapis.com [omitted]
+[debug] [2026-05-08T20:36:11.979Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/secretmanager.googleapis.com 200
+[debug] [2026-05-08T20:36:11.979Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/secretmanager.googleapis.com [omitted]
+[debug] [2026-05-08T20:36:12.049Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/cloudbuild.googleapis.com 200
+[debug] [2026-05-08T20:36:12.049Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/cloudbuild.googleapis.com [omitted]
+[debug] [2026-05-08T20:36:12.054Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/iam.googleapis.com 200
+[debug] [2026-05-08T20:36:12.054Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/iam.googleapis.com [omitted]
+[debug] [2026-05-08T20:36:12.058Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/developerconnect.googleapis.com 200
+[debug] [2026-05-08T20:36:12.058Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/developerconnect.googleapis.com [omitted]
+[debug] [2026-05-08T20:36:12.058Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:12.058Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:12.058Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/developerconnect.googleapis.com:enable [none]
+[debug] [2026-05-08T20:36:12.058Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/developerconnect.googleapis.com:enable  x-goog-user-project=filmbridge0405
+[debug] [2026-05-08T20:36:13.835Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/developerconnect.googleapis.com:enable 200
+[debug] [2026-05-08T20:36:13.835Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/filmbridge0405/services/developerconnect.googleapis.com:enable [omitted]
+[debug] [2026-05-08T20:36:23.848Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:23.848Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:23.848Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/filmbridge0405/serviceAccounts/firebase-app-hosting-compute@filmbridge0405.iam.gserviceaccount.com:testIamPermissions [none]
+[debug] [2026-05-08T20:36:23.848Z] >>> [apiv2][(partial)header] POST https://iam.googleapis.com/v1/projects/filmbridge0405/serviceAccounts/firebase-app-hosting-compute@filmbridge0405.iam.gserviceaccount.com:testIamPermissions  x-goog-user-project=filmbridge0405
+[debug] [2026-05-08T20:36:23.848Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/filmbridge0405/serviceAccounts/firebase-app-hosting-compute@filmbridge0405.iam.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2026-05-08T20:36:25.597Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/filmbridge0405/serviceAccounts/firebase-app-hosting-compute@filmbridge0405.iam.gserviceaccount.com:testIamPermissions 404
+[debug] [2026-05-08T20:36:25.597Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/filmbridge0405/serviceAccounts/firebase-app-hosting-compute@filmbridge0405.iam.gserviceaccount.com:testIamPermissions {"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}}
+[debug] [2026-05-08T20:36:25.598Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:25.598Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:25.598Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/filmbridge0405/serviceAccounts [none]
+[debug] [2026-05-08T20:36:25.598Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/filmbridge0405/serviceAccounts {"accountId":"firebase-app-hosting-compute","serviceAccount":{"displayName":"Firebase App Hosting compute service account","description":"Default service account used to run builds and deploys for Firebase App Hosting"}}
+[debug] [2026-05-08T20:36:26.438Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/filmbridge0405/serviceAccounts 200
+[debug] [2026-05-08T20:36:26.438Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/filmbridge0405/serviceAccounts [omitted]
+[debug] [2026-05-08T20:36:26.439Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:26.439Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:26.439Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/filmbridge0405:getIamPolicy [none]
+[debug] [2026-05-08T20:36:28.385Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/filmbridge0405:getIamPolicy 200
+[debug] [2026-05-08T20:36:28.386Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/filmbridge0405:getIamPolicy {"version":1,"etag":"BwZRVFiJaAI=","bindings":[{"role":"roles/cloudbuild.builds.builder","members":["serviceAccount:378735504887@cloudbuild.gserviceaccount.com"]},{"role":"roles/cloudbuild.serviceAgent","members":["serviceAccount:service-378735504887@gcp-sa-cloudbuild.iam.gserviceaccount.com"]},{"role":"roles/containerregistry.ServiceAgent","members":["serviceAccount:service-378735504887@containerregistry.iam.gserviceaccount.com"]},{"role":"roles/editor","members":["serviceAccount:378735504887-compute@developer.gserviceaccount.com"]},{"role":"roles/firebase.managementServiceAgent","members":["serviceAccount:service-378735504887@gcp-sa-firebase.iam.gserviceaccount.com"]},{"role":"roles/firebase.sdkAdminServiceAgent","members":["serviceAccount:firebase-adminsdk-fbsvc@filmbridge0405.iam.gserviceaccount.com"]},{"role":"roles/iam.serviceAccountTokenCreator","members":["serviceAccount:firebase-adminsdk-fbsvc@filmbridge0405.iam.gserviceaccount.com"]},{"role":"roles/owner","members":["user:harishdola54@gmail.com"]},{"role":"roles/run.serviceAgent","members":["serviceAccount:service-378735504887@serverless-robot-prod.iam.gserviceaccount.com"]}]}
+[debug] [2026-05-08T20:36:28.386Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:28.387Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:36:28.387Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/filmbridge0405:setIamPolicy [none]
+[debug] [2026-05-08T20:36:28.387Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/filmbridge0405:setIamPolicy {"policy":{"version":1,"etag":"BwZRVFiJaAI=","bindings":[{"role":"roles/cloudbuild.builds.builder","members":["serviceAccount:378735504887@cloudbuild.gserviceaccount.com"]},{"role":"roles/cloudbuild.serviceAgent","members":["serviceAccount:service-378735504887@gcp-sa-cloudbuild.iam.gserviceaccount.com"]},{"role":"roles/containerregistry.ServiceAgent","members":["serviceAccount:service-378735504887@containerregistry.iam.gserviceaccount.com"]},{"role":"roles/editor","members":["serviceAccount:378735504887-compute@developer.gserviceaccount.com"]},{"role":"roles/firebase.managementServiceAgent","members":["serviceAccount:service-378735504887@gcp-sa-firebase.iam.gserviceaccount.com"]},{"role":"roles/firebase.sdkAdminServiceAgent","members":["serviceAccount:firebase-adminsdk-fbsvc@filmbridge0405.iam.gserviceaccount.com","serviceAccount:firebase-app-hosting-compute@filmbridge0405.iam.gserviceaccount.com"]},{"role":"roles/iam.serviceAccountTokenCreator","members":["serviceAccount:firebase-adminsdk-fbsvc@filmbridge0405.iam.gserviceaccount.com"]},{"role":"roles/owner","members":["user:harishdola54@gmail.com"]},{"role":"roles/run.serviceAgent","members":["serviceAccount:service-378735504887@serverless-robot-prod.iam.gserviceaccount.com"]},{"role":"roles/firebaseapphosting.computeRunner","members":["serviceAccount:firebase-app-hosting-compute@filmbridge0405.iam.gserviceaccount.com"]},{"role":"roles/developerconnect.readTokenAccessor","members":["serviceAccount:firebase-app-hosting-compute@filmbridge0405.iam.gserviceaccount.com"]},{"role":"roles/storage.objectViewer","members":["serviceAccount:firebase-app-hosting-compute@filmbridge0405.iam.gserviceaccount.com"]}]},"updateMask":"bindings"}
+[debug] [2026-05-08T20:36:29.470Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/filmbridge0405:setIamPolicy 200
+[debug] [2026-05-08T20:36:29.471Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/filmbridge0405:setIamPolicy {"version":1,"etag":"BwZRVFn+88Y=","bindings":[{"role":"roles/cloudbuild.builds.builder","members":["serviceAccount:378735504887@cloudbuild.gserviceaccount.com"]},{"role":"roles/cloudbuild.serviceAgent","members":["serviceAccount:service-378735504887@gcp-sa-cloudbuild.iam.gserviceaccount.com"]},{"role":"roles/containerregistry.ServiceAgent","members":["serviceAccount:service-378735504887@containerregistry.iam.gserviceaccount.com"]},{"role":"roles/developerconnect.readTokenAccessor","members":["serviceAccount:firebase-app-hosting-compute@filmbridge0405.iam.gserviceaccount.com"]},{"role":"roles/editor","members":["serviceAccount:378735504887-compute@developer.gserviceaccount.com"]},{"role":"roles/firebase.managementServiceAgent","members":["serviceAccount:service-378735504887@gcp-sa-firebase.iam.gserviceaccount.com"]},{"role":"roles/firebase.sdkAdminServiceAgent","members":["serviceAccount:firebase-adminsdk-fbsvc@filmbridge0405.iam.gserviceaccount.com","serviceAccount:firebase-app-hosting-compute@filmbridge0405.iam.gserviceaccount.com"]},{"role":"roles/firebaseapphosting.computeRunner","members":["serviceAccount:firebase-app-hosting-compute@filmbridge0405.iam.gserviceaccount.com"]},{"role":"roles/iam.serviceAccountTokenCreator","members":["serviceAccount:firebase-adminsdk-fbsvc@filmbridge0405.iam.gserviceaccount.com"]},{"role":"roles/owner","members":["user:harishdola54@gmail.com"]},{"role":"roles/run.serviceAgent","members":["serviceAccount:service-378735504887@serverless-robot-prod.iam.gserviceaccount.com"]},{"role":"roles/storage.objectViewer","members":["serviceAccount:firebase-app-hosting-compute@filmbridge0405.iam.gserviceaccount.com"]}]}
+[info] i  This command links your local project to Firebase App Hosting. You will be able to deploy your web app with `firebase deploy` after setup. 
+[debug] [2026-05-08T20:38:49.075Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:38:49.075Z] Checked if tokens are valid: true, expires at: 1778276152788
+[debug] [2026-05-08T20:38:49.075Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/filmbridge0405/locations/-/backends 
+[debug] [2026-05-08T20:38:50.865Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/filmbridge0405/locations/-/backends 200
+[debug] [2026-05-08T20:38:50.865Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/filmbridge0405/locations/-/backends {}
+[debug] [2026-05-08T20:39:17.210Z] ExitPromptError: User force closed the prompt with SIGINT
+    at Interface.sigint (C:\Users\Harish\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\@inquirer\core\dist\commonjs\lib\create-prompt.js:101:37)
+    at Interface.emit (node:events:509:28)
+    at [_ttyWrite] [as _ttyWrite] (node:internal/readline/interface:1327:18)
+    at ReadStream.onkeypress (node:internal/readline/interface:284:20)
+    at ReadStream.emit (node:events:521:24)
+    at emitKeys (node:internal/readline/utils:371:14)
+    at emitKeys.next (<anonymous>)
+    at ReadStream.onData (node:internal/readline/emitKeypressEvents:64:36)
+    at ReadStream.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+[error] 
+[error] Error: An unexpected error has occurred.
