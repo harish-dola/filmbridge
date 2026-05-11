@@ -1,72 +1,48 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Section } from '@/components/ui/Section';
 import { Navbar } from '@/components/ui/Navbar';
 import { Footer } from '@/components/ui/Footer';
+import { ARTICLES_DATA } from '@/data/articles';
 
 const FEATURED_RESOURCES = [
-  {
-    id: "the-editors-rhythm",
-    title: "The Editor's Rhythm",
-    type: "Article",
-    description: "Mastering the invisible art of pacing and narrative flow in the cutting room.",
-    image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: "cinematic-lighting",
-    title: "Cinematic Lighting",
-    type: "Manual",
-    description: "Understanding photons, sensors, and the psychological impact of light placement.",
-    image: "https://images.unsplash.com/photo-1492691523567-6170f0295df1?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: "color-science",
-    title: "Color Science",
-    type: "Technical Guide",
-    description: "Mastering Log profiles, LUTs, and the color pipeline for high-end digital cinema.",
-    image: "https://images.unsplash.com/photo-1550684376-efcbd6e3f031?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: "directing-the-camera",
-    title: "Directing the Camera",
-    type: "Manual",
-    description: "Translating performance blocking into a comprehensive and dynamic shot list.",
-    image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1200&auto=format&fit=crop",
-  },
+  ARTICLES_DATA["the-editors-rhythm"],
+  ARTICLES_DATA["cinematic-lighting"],
+  ARTICLES_DATA["color-science"],
+  ARTICLES_DATA["directing-the-camera"],
 ];
 
 const WHY_FILMBRIDGE = [
   {
     emoji: "🎬",
-    title: "Real Filmmaking",
-    description: "Learn the practical realities behind writing, production, direction, editing, and distribution."
+    title: "Process First",
+    description: "Learn how films actually move from rough idea to script, schedule, shoot, edit, and release."
   },
   {
     emoji: "📖",
-    title: "Educational Content",
-    description: "Access structured articles and resources curated specifically for cinema enthusiasts."
+    title: "Usable Resources",
+    description: "Study focused lessons, templates, and breakdowns built for creators who want practical next steps."
   },
   {
     emoji: "🚀",
-    title: "Community Growth",
-    description: "Build connections with people who genuinely want to create films and collaborate."
+    title: "Creator Network",
+    description: "Connect with people learning the same craft and turn isolated study into steady collaboration."
   }
 ];
 
 export default function FilmBridgeLandingPage() {
   const router = useRouter();
   const [showNewsletter, setShowNewsletter] = useState(false);
-  const [hasShownThisSession, setHasShownThisSession] = useState(false);
+  const [hasShownThisSession, setHasShownThisSession] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return sessionStorage.getItem('fb_newsletter_shown') === 'true';
+  });
 
   useEffect(() => {
-    const shown = sessionStorage.getItem('fb_newsletter_shown');
-    if (shown) setHasShownThisSession(true);
-
     const handleScroll = () => {
       if (hasShownThisSession) return;
       
@@ -131,7 +107,7 @@ export default function FilmBridgeLandingPage() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-400">
-              New: The Editor's Rhythm Technical Guide
+              New: The Editor&apos;s Rhythm Breakdown
             </span>
           </div>
 
@@ -142,7 +118,7 @@ export default function FilmBridgeLandingPage() {
 
           <p className="mt-8 text-zinc-500 text-lg md:text-2xl leading-relaxed max-w-2xl mx-auto font-light tracking-wide">
             Learn the real process behind filmmaking. 
-            Practical guides for aspiring creators.
+            Practical resources for aspiring creators.
           </p>
 
           <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -169,135 +145,193 @@ export default function FilmBridgeLandingPage() {
         <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
         
         <div className="grid md:grid-cols-4 gap-6 mt-16 relative z-10">
-          {FEATURED_RESOURCES.map((item, index) => (
-            <div key={index} className="group flex flex-col bg-white border border-zinc-100 hover:border-primary transition-all duration-500 shadow-sm hover:shadow-xl cursor-pointer" onClick={() => router.push(`/articles/${item.id}`)}>
-              <div className="relative aspect-[4/5] overflow-hidden border-b border-zinc-100">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-1000 grayscale group-hover:grayscale-0"
-                />
-                <div className="absolute top-4 left-4">
-                   <Badge variant="primary" className="bg-white/95 backdrop-blur-md text-primary border-none shadow-sm">{item.type}</Badge>
+          {FEATURED_RESOURCES.map((item, index) => {
+            const isPremium = item.isPremium;
+            return (
+              <div key={index} className="group flex flex-col bg-white border border-zinc-100 hover:border-primary transition-all duration-500 shadow-sm hover:shadow-xl cursor-pointer" onClick={() => router.push(`/articles/${item.id}`)}>
+                <div className="relative aspect-[4/5] overflow-hidden border-b border-zinc-100">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition duration-1000 grayscale group-hover:grayscale-0"
+                  />
+                  <div className="absolute top-4 left-4">
+                     <Badge variant="primary" className="bg-white/95 backdrop-blur-md text-primary border-none shadow-sm">{item.category}</Badge>
+                  </div>
+                  {isPremium && (
+                    <div className="absolute top-4 right-4 bg-primary/95 backdrop-blur-md p-2 shadow-lg">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                  )}
                 </div>
-              </div>
 
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-lg font-black uppercase tracking-tight group-hover:text-primary transition text-[#121212] leading-tight">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-zinc-500 text-xs leading-relaxed font-medium line-clamp-3">
-                  {item.description}
-                </p>
-                <div className="mt-auto pt-6 flex items-center justify-between border-t border-zinc-50">
-                  <span className="text-[9px] uppercase tracking-widest font-bold text-zinc-300">Available</span>
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#121212] group-hover:text-primary flex items-center gap-2 transition-colors">
-                    Access <span className="text-sm">→</span>
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-lg font-black uppercase tracking-tight group-hover:text-primary transition text-[#121212] leading-tight">
+                    {item.title.split(':')[0]}
+                  </h3>
+                  <p className="mt-3 text-zinc-500 text-xs leading-relaxed font-medium line-clamp-3">
+                    {item.subtitle || item.description}
+                  </p>
+                  <div className="mt-auto pt-6 flex items-center justify-between border-t border-zinc-50">
+                    <span className="text-[9px] uppercase tracking-widest font-bold text-zinc-300">
+                      {isPremium ? 'Premium' : 'Available'}
+                    </span>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-[#121212] group-hover:text-primary flex items-center gap-2 transition-colors">
+                      {isPremium ? 'Unlock' : 'Access'} <span className="text-sm">→</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </Section>
 
-      {/* Membership Section */}
-      <section className="relative px-6 py-32 overflow-hidden border-b border-zinc-100 bg-white">
-        <div className="absolute inset-0 bg-grid opacity-100" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_white_100%)] opacity-80" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-primary)_0%,_transparent_100%)] opacity-[0.08]" />
-        
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center relative z-10">
+      {/* Access Section */}
+      <section id="access" className="relative overflow-hidden border-b border-zinc-100 bg-white px-6 py-28 md:py-40">
+        <div className="absolute inset-0 bg-grid opacity-70" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_white_82%)] opacity-90" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_25%,_var(--color-primary)_0%,_transparent_34%)] opacity-[0.08]" />
+
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-20 lg:grid-cols-[1fr_0.82fr] lg:items-center">
           <div>
-            <Badge className="mb-6">Membership</Badge>
-            <h2 className="text-5xl md:text-7xl font-black leading-[0.95] uppercase tracking-tighter text-[#121212]">
+            <Badge className="mb-8 rounded-none px-4 py-1.5 uppercase tracking-[0.3em]">Full Access</Badge>
+            <h2 className="max-w-3xl text-6xl md:text-8xl font-black uppercase italic leading-[0.85] tracking-tight text-[#121212]">
               Unlock <br />
-              <span className="text-primary italic">Resources</span>
+              <span className="text-primary not-italic">Resources.</span>
             </h2>
 
-            <p className="mt-10 text-zinc-500 text-lg leading-relaxed max-w-lg font-light">
-              Get full access to all articles, e-books, breakdowns, and community features.
+            <p className="mt-10 max-w-xl text-lg md:text-xl font-light leading-relaxed text-zinc-500">
+              FilmBridge is a professional filmmaking community. Join to access 
+              in-depth analysis, technical breakdowns, and exclusive articles shared by active creators.
             </p>
 
-            <div className="mt-12 space-y-5">
+            <div className="mt-12 grid sm:grid-cols-2 gap-8">
               {[
-                "Exclusive Articles",
-                "E-Books & Guides",
-                "Community Access",
-                "Behind The Scenes"
+                { title: "Exclusive Articles", desc: "In-depth technical analysis", icon: "📄" },
+                { title: "E-Books & Manuals", desc: "Downloadable study guides", icon: "📚" },
+                { title: "Community Forum", desc: "Collaborate with peers", icon: "💬" },
+                { title: "Project Assets", desc: "Shot lists & schedules", icon: "📂" }
               ].map((feature, i) => (
-                <div key={i} className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-600">
-                  <span className="w-1.5 h-1.5 bg-primary" />
-                  {feature}
+                <div key={i} className="group flex items-start gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-zinc-50 border border-zinc-100 text-lg group-hover:border-primary/30 transition-colors">
+                    {feature.icon}
+                  </div>
+                  <div>
+                    <h4 className="text-[10px] font-black uppercase tracking-widest text-[#121212] mb-1">{feature.title}</h4>
+                    <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">{feature.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="relative w-full max-w-xl mx-auto bg-white border border-zinc-100 shadow-2xl p-8 md:p-14 py-16 md:py-20">
-            <div className="w-full max-w-sm mx-auto text-center">
-              <h3 className="text-2xl font-black mb-10 uppercase tracking-tighter italic text-[#121212]">Login</h3>
-              <div className="space-y-6 text-left">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 ml-1">Email Address</label>
-                  <input type="email" placeholder="you@example.com" className="w-full bg-[#fafafa] border border-zinc-100 rounded-none px-5 py-3 outline-none focus:border-primary transition" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 ml-1">Password</label>
-                  <input type="password" placeholder="••••••••" className="w-full bg-[#fafafa] border border-zinc-100 rounded-none px-5 py-3 outline-none focus:border-primary transition" />
+          <div className="relative">
+            <div className="absolute -top-10 -right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+            
+            <div className="relative border border-zinc-100 bg-white p-12 md:p-16 shadow-2xl">
+              <div className="flex flex-col gap-8">
+                <div>
+                  <Badge variant="primary" className="mb-6 rounded-none px-4 py-1 uppercase tracking-[0.3em]">Workspace</Badge>
+                  <h3 className="text-4xl font-black uppercase italic tracking-tighter text-[#121212] leading-none mb-6">
+                    Join the <br />
+                    Network.
+                  </h3>
+                  <p className="text-zinc-500 text-sm font-medium leading-relaxed max-w-[280px]">
+                    Create your profile to save articles, access technical assets, and join the filmmaking community.
+                  </p>
                 </div>
                 
-                <Button className="w-full py-4 text-xs uppercase tracking-[0.3em] rounded-none shadow-lg hover:shadow-primary/20" onClick={() => router.push('/auth')}>Login</Button>
-                
-                <div className="relative py-4">
-                  <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-zinc-100"></div></div>
-                  <div className="relative flex justify-center text-[9px] uppercase tracking-[0.4em]"><span className="bg-white px-4 text-zinc-300">OR</span></div>
+                <div className="space-y-4">
+                  <Button 
+                    className="w-full py-5 rounded-none text-[10px] font-black uppercase tracking-[0.4em] shadow-xl hover:shadow-primary/20 transition-all"
+                    onClick={() => router.push('/auth?mode=signup')}
+                  >
+                    Create Account
+                  </Button>
+                  <Button 
+                    variant="secondary" 
+                    className="w-full py-5 rounded-none text-[10px] font-black uppercase tracking-[0.4em] border-zinc-100 bg-white text-zinc-400 hover:text-[#121212] transition-all"
+                    onClick={() => router.push('/auth')}
+                  >
+                    Member Login
+                  </Button>
                 </div>
 
-                <Button variant="secondary" className="w-full py-4 text-[10px] uppercase tracking-[0.2em] border-zinc-200 rounded-none hover:bg-zinc-50" onClick={() => router.push('/auth')}>
-                  Continue with Google
-                </Button>
+                <div className="pt-8 border-t border-zinc-50 flex items-center justify-between">
+                  <span className="text-[8px] font-bold uppercase tracking-[0.3em] text-zinc-300">FilmBridge Community</span>
+                  <div className="flex gap-1.5">
+                    <div className="w-1 h-1 rounded-full bg-zinc-200" />
+                    <div className="w-1 h-1 rounded-full bg-zinc-200" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                  </div>
+                </div>
               </div>
-
-              <p className="mt-10 text-center text-zinc-400 text-[9px] uppercase tracking-widest font-medium">
-                Don't have an account? <button onClick={() => router.push('/auth')} className="text-primary hover:text-[#121212] transition-colors font-bold">Sign Up</button>
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <Section 
-        subtitle="About Us" 
-        title="Bridging Cinema"
-        containerClassName="text-center relative z-10"
-        className="relative bg-white border-t border-zinc-100 overflow-hidden py-32"
-      >
-        <div className="absolute inset-0 bg-grid opacity-25 pointer-events-none" />
+      {/* About Section - Immersive Storytelling */}
+      <section id="about" className="relative overflow-hidden border-t border-zinc-100 bg-white px-6 py-32 md:py-56">
+        <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,_var(--color-primary)_0%,_transparent_35%)] opacity-[0.06] pointer-events-none" />
         
-        <p className="mt-8 text-zinc-500 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto font-light relative z-10">
-          FilmBridge helps aspiring filmmakers understand the real process behind 
-          cinema — from writing to distribution.
-        </p>
+        {/* Decorative Optical Frame */}
+        <div className="absolute -left-20 top-1/4 opacity-[0.03] pointer-events-none select-none">
+          <svg width="600" height="600" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5">
+            <circle cx="50" cy="50" r="45" />
+            <circle cx="50" cy="50" r="35" />
+            <line x1="0" y1="50" x2="100" y2="50" />
+            <line x1="50" y1="0" x2="50" y2="100" />
+          </svg>
+        </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mt-24 text-left relative z-10">
-          {WHY_FILMBRIDGE.map((item, index) => (
-            <div key={index} className="p-10 border border-zinc-100 bg-white hover:border-primary transition-all duration-500 shadow-sm hover:shadow-xl group">
-              <div className="text-2xl mb-8 w-14 h-14 flex items-center justify-center bg-[#fafafa] border border-zinc-100 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-500">
-                {item.emoji}
-              </div>
-              <h3 className="text-lg font-black uppercase tracking-tight italic mb-4 text-[#121212]">{item.title}</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed font-medium">
-                {item.description}
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
+          <div className="flex flex-col items-center">
+            <div className="flex items-center gap-5 mb-10">
+              <span className="h-px w-10 bg-primary" />
+              <Badge className="rounded-none border-primary/20 bg-primary/5 px-4 py-1.5 text-primary uppercase tracking-[0.4em] font-black text-[9px]">The Mission</Badge>
+              <span className="h-px w-10 bg-primary" />
+            </div>
+            
+            <h2 className="text-7xl md:text-9xl font-black uppercase italic leading-[0.82] tracking-tighter text-[#121212]">
+              Bridging <br />
+              <span className="text-zinc-200">The Gap.</span>
+            </h2>
+            
+            <div className="mt-14 space-y-10">
+              <p className="text-2xl md:text-3xl font-light leading-snug tracking-tight text-zinc-500">
+                FilmBridge is a filmmaking community dedicated to the <span className="text-[#121212] font-black italic underline decoration-primary/40 underline-offset-8">technical truth</span> of cinema. 
               </p>
-              <div className="mt-8 pt-6 border-t border-zinc-50">
-                <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-zinc-300">Phase {index + 1}</span>
+              <p className="text-lg font-medium leading-relaxed text-zinc-400 max-w-2xl uppercase tracking-wide">
+                We observe that the distance between a good idea and a professional film is often a matter of process. We provide the industry-standard frameworks and in-depth analysis typically reserved for studio systems.
+              </p>
+            </div>
+
+            <div className="mt-20 grid grid-cols-2 gap-12 border-t border-zinc-100 pt-16 w-full text-left">
+              <div>
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-1.5 h-1.5 bg-primary" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#121212]">Technical Depth</span>
+                </div>
+                <p className="text-xs font-bold text-zinc-400 leading-relaxed uppercase tracking-widest">
+                  Vetted by active industry professionals to ensure technical accuracy and practical utility.
+                </p>
+              </div>
+              <div>
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-1.5 h-1.5 bg-primary" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#121212]">Peer Network</span>
+                </div>
+                <p className="text-xs font-bold text-zinc-400 leading-relaxed uppercase tracking-widest">
+                  Join a global collective of technical creators sharing notes, breakdowns, and production assets.
+                </p>
               </div>
             </div>
-          ))}
+          </div>
         </div>
-      </Section>
+      </section>
 
       <Footer />
     </div>
